@@ -1,0 +1,22 @@
+---
+- name: install required software
+  hosts: centos_servers
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: install required softwares
+      package:
+        name: httpd
+        state: absent
+      register: output
+
+    - name: print output
+      debug:
+        msg: "{{ output }}"
+
+    - name: run only when return code is zero
+      debug:
+        msg: "run only when success"
+      when: output.changed == true
+    

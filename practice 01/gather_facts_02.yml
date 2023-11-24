@@ -1,0 +1,11 @@
+---
+- name: gather facts about Centos servers
+  hosts: all
+  tasks:
+    - name: show ansible_os_family
+      debug:
+        msg: "{{ ansible_os_family }}"
+    - name: show mount points
+      debug:
+        msg: "{{ ansible_mounts }}"
+      when: ansible_os_family == 'RedHat'

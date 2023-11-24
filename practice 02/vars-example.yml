@@ -1,0 +1,19 @@
+---
+- name: variable example
+  hosts: all
+  tasks:
+    - name: just show variable value
+      debug:
+        msg: "{{ http_port }} and admin user is: {{ admin_user }}"
+    
+    - name: just show variable value
+      vars:
+        http_port: 90
+      debug:
+        msg: "tomcat is going to run on {{ http_port }}"    
+    - name: open a port on the server with the variable name called port
+      ansible.posix.firewalld:
+        port: "{{ port }}"
+        permanent: true
+        immediate: true
+        state: enabled

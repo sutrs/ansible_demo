@@ -1,0 +1,10 @@
+---
+- name: install required software
+  hosts: centos_servers
+  gather_facts: no
+  become: yes
+  roles:
+    - install-git
+    - install-httpd
+    - install-telnet
+    - install-wget

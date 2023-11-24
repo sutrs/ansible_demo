@@ -1,0 +1,12 @@
+---
+- name: install required software
+  hosts: centos_servers
+  gather_facts: yes
+
+  tasks:
+    - name: install required softwares
+      debug:
+        msg: "Total Utilization: {{ item.block_used  / item.block_total * 100 }}"
+      loop: "{{ ansible_mounts }}"
+      loop_control:
+        label: "{{ item.mount }}"

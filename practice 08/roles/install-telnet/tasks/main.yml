@@ -1,0 +1,4 @@
+- name: install telnet
+  ansible.builtin.package:
+    name: telnet
+    state: present

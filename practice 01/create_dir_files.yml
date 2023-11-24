@@ -1,0 +1,16 @@
+---
+- name: creating user
+  hosts: centos_servers
+  gather_facts: yes
+  tasks:
+
+    - name: create a directory called example under /tmp
+      file:
+        name: /tmp/example
+        state: directory
+
+    - name: create a hello_world.txt file under /tmp/example
+      file:
+        name: /tmp/example/hello_world.txt
+        state: touch
+  

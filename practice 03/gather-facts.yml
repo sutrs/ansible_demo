@@ -1,0 +1,13 @@
+---
+- name: check all servers
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: show gather gather_facts
+      debug:
+        msg: " os family {{ ansible_os_family }} and distribution is {{ ansible_distribution }}"
+    
+    - name: run only on windows
+      debug: 
+        msg: "I am windows servers"
+      when: ansible_os_family == 'Windows'
